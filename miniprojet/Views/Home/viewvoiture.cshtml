@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "viewvoiture";
+}
+
+
+@model miniprojet.Models.listaffichvoitures
+
+
+
+
+
+<html>
+<head>
+    <style>
+        /*.aaa {
+            /*display: inline-block;
+            display: grid;
+        }*/
+
+            .aaa:hover {
+                transform: scale(1.1);
+                box-shadow: 4px 4px 10px rgba(0,0,0,.2);
+            }
+
+        .aaa {
+            transition: transform .3s ease-in-out;
+        }
+        .section{
+            margin-top:50px;
+        }
+    </style>
+</head>
+
+
+<body>
+    
+   <!-- <div  >
+        @foreach (var d in Model.laffichvoitures)
+        {
+            <div class="aaa" style="width: 24%; height: 200px;"onclick="senddata('@d.voiture'),senddata11('@d.voiture') " >
+                <img src="~/imag/doc/@d.photo1" />
+                <div  >
+                    <p  style=" font-size: 15px; font-family: cursive; ">@d.marque:@d.voiture</p><br />
+                    <p  style="font-size: 15px; font-family: cursive; ">prix : @d.prix DT</p>
+                </div>
+               
+            </div>
+
+
+        }
+
+    </div>-->
+     <div class="container section">
+         <div class="row">
+             @foreach (var d in Model.laffichvoitures)
+             {
+                 <div class="col-sm-6 col-md-3" onclick="senddata('@d.voiture'),senddata11('@d.voiture') ">
+
+                     <div class="thumbnail aaa" >
+                         <img src="~/imag/doc/@d.photo1" style="height:150px;">
+                         <div class="caption">
+                             <h3 class="text-center">@d.marque:@d.voiture</h3>
+                             <p class="text-center">prix : @d.prix DT</p>
+                         </div>
+                     </div>
+                     
+                 </div>
+             }
+             </div>
+
+
+     </div>
+
+
+</body>
+
+</html>
+<script>
+
+    function senddata(voiture) {
+    console.log('wiem');
+
+
+    $.ajax({
+        url: "/Home/listphotovoiturespeci",
+    type: "post",
+
+    data: {
+    "voiture": voiture
+    },
+
+    success: function (result) {
+    //location.reload();
+        location.replace("https://localhost:44388/Home/Viewspeciphique");
+
+    },
+    error: function (errormessage) {
+    alert(errormessage.responseText);
+    }
+    });
+    }
+
+
+    function senddata11(voiture) {
+        console.log('wiem');
+
+
+        $.ajax({
+            url: "/Home/comment",
+            type: "post",
+
+            data: {
+                "voiture": voiture
+            },
+
+            success: function (result) {
+                //location.reload();
+                
+
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+
+</script>
+
+
+
+
+
+
+
+

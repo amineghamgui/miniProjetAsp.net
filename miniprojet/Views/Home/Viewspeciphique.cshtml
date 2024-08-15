@@ -1,0 +1,654 @@
+﻿
+@{
+    ViewBag.Title = "Viewspeciphique";
+}
+@model miniprojet.Models.vispecifique
+
+
+<html>
+<head>
+    @*<link rel="stylesheet" href="~/Content/StyleSheet1.css">*@
+    <style>
+        .fset {
+            margin-top: 100px;
+        }
+
+        .comment {
+            margin-left:425px
+        }
+
+        .x1, .x2 {
+            display: inline-block
+        }
+
+        .h1 {
+            height: 100px;
+        }
+
+        .b1 {
+            margin-left: 20px
+        }
+
+        .b2 {
+            margin-left: 30px
+        }
+
+        .b1, .b2 {
+            display: inline-block
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        img {
+            /*max-width: 100%*/
+            max-width: 100%;
+            height: auto;
+        }
+
+        input[type=radio] {
+            position: absolute;
+            left: -9999px
+        }
+        /*on cache tous les input*/
+
+        .slider-input label {
+            cursor: pointer /*on pointe tous les labels*/
+        }
+
+        .slider-input {
+            overflow: hidden;
+            position: relative;
+            max-width: 600px;
+            margin: 2rem auto
+        }
+
+
+        .photos-mini {
+            padding-top: 66.67%; /* il s'agit du ratio pour le responsive*/
+            display: flex;
+        }
+
+        .miniature {
+            flex: 1; /*les photos occupent la même place selon la largeur du conteneur*/
+            padding: .25rem;
+        }
+
+
+        .fenetre { /*grande photo*/
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: transform .6s,opacity .6s;
+            transform: translatex(-100%);
+            opacity: 0;
+            width: 100%;
+            height: auto;
+        }
+
+        .fen:checked ~ .fenetre {
+            transform: translatex(0%);
+            opacity: 1
+        }
+
+        .figcaption { /*optionnel*/
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: .25rem;
+            transition: opacity .4s;
+            opacity: 0;
+            display: flex;
+            justify-content: center;
+            color: white;
+            background: hsla(0,0%,0%,.8)
+        }
+
+        .fen:checked ~ .figcaption {
+            opacity: 1
+        }
+
+
+
+
+        /*////////////////////////////////////////////table////////////////////*/
+        <style >
+        .customers {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .customers tr:hover {
+            background-color: #ddd;
+        }
+
+        .customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #808080;
+            color: white;
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    @foreach (var d in Model.listadm)
+    {<h1 style="color: blue;font-family: cursive; ">@d.marque</h1>
+}       
+    <div class="slider-input">
+
+
+        <div class="photos-mini">
+
+
+
+
+            @foreach (var d in Model.listadm)
+            {
+                <div class=miniature>
+                    <input type="radio" name="demo" checked class="fen" id="lightbox-1">
+                    <label for="lightbox-1">
+                        <img src="~/imag/doc/@d.photo1">
+                    </label>
+                    <img class="fenetre" src="~/imag/doc/@d.photo1">
+                    <span class=figcaption>Titre1, description</span>
+                </div>
+
+                <div class=miniature>
+                    <input type="radio" name="demo" class="fen" id="lightbox-2">
+                    <label for="lightbox-2">
+                        <img src="~/imag/doc/@d.photo2">
+                    </label>
+                    <img class="fenetre" src="~/imag/doc/@d.photo2">
+                    <span class=figcaption>Titre5, description</span>
+                </div>
+
+                <div class=miniature>
+                    <input type="radio" name="demo" class="fen" id="lightbox-3">
+                    <label for="lightbox-3">
+                        <img src="~/imag/doc/@d.photo3">
+                    </label>
+                    <img class="fenetre" src="~/imag/doc/@d.photo3">
+                    <span class=figcaption>Titre5, description</span>
+                </div>
+
+
+
+                <div class=miniature>
+                    <input type="radio" name="demo" class="fen" id="lightbox-4">
+                    <label for="lightbox-4">
+                        <img src="~/imag/doc/@d.photo4">
+                    </label>
+                    <img class="fenetre" src="~/imag/doc/@d.photo4">
+                    <span class=figcaption>Titre4, description</span>
+                </div>
+                <div class=miniature>
+                    <input type="radio" name="demo" class="fen" id="lightbox-5">
+                    <label for="lightbox-5">
+                        <img src="~/imag/doc/@d.photo5">
+                    </label>
+                    <img class="fenetre" src="~/imag/doc/@d.photo5">
+                    <span class=figcaption>Titre5, description</span>
+                </div>
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+    @foreach (var d in Model.listadm)
+    {
+        <div style="margin:auto ; text-align:center;">
+            <h2 style="font-family: cursive;">@d.marque  @d.voiture</h2>
+            <h2 style="font-family: cursive;">@d.prix DT</h2>
+
+        </div>
+
+    }
+
+
+    <table style="margin:auto">
+        <tr>
+
+
+
+
+
+
+            <td>
+                <table class="customers">
+
+                    <tr>
+
+                        <h2>caracteristiques:</h2>
+                    </tr>
+                    @foreach (var d in Model.listadm)
+                    {
+                        <tr>
+                            <td>
+                                nombre de portes
+
+                            </td>
+                            <td>
+                                @d.c_nbre_porte portes
+
+
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                nombre de place
+
+                            </td>
+                            <td>
+                                @d.c_nombre_place places
+
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                Garantie
+
+                            </td>
+                            <td>
+                                @d.c_Grantie ans
+
+
+                            </td>
+                        </tr>
+
+
+                    }
+
+
+
+                </table>
+
+
+
+            </td>
+
+
+
+
+
+
+
+            <td>
+                <table class="customers">
+
+                    @foreach (var d in Model.listadm)
+                    {
+                        <tr>
+
+
+                            <h2>dimensions</h2>
+                        </tr>
+                        <tr>
+                            <td>
+                                longeur de voiture
+                            </td>
+                            <td>
+                                @d.d_longeur cm
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                largeur de voiture
+                            </td>
+                            <td>
+                                @d.d_largeur cm
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                hauteur de voiture
+                            </td>
+                            <td>
+                                @d.d_hauteur cm
+                            </td>
+
+                        </tr>
+                    }
+
+                </table>
+
+
+
+            </td>
+
+
+
+
+
+        </tr>
+
+
+
+
+        <tr>
+
+
+
+
+
+
+            <td>
+                <table class="customers">
+
+                    <tr>
+                        <h2>motorisation</h2>
+                    </tr>
+
+
+                    @foreach (var d in Model.listadm)
+                    {
+                        <tr>
+                            <td>nomber de cylindre</td>
+                            <td>@d.nbrecylindre  cylindres</td>
+
+
+
+                        </tr>
+
+                        <tr>
+                            <td>energies</td>
+                            <td>@d.energie</td>
+
+
+
+                        </tr>
+
+                        <tr>
+                            <td>puissance</td>
+                            <td>@d.puissance CH</td>
+
+
+
+                        </tr>
+
+                        <tr>
+                            <td>puissance fiscale</td>
+                            <td>@d.puissance_fiscale</td>
+
+
+
+                        </tr>
+
+                    }
+
+                </table>
+
+
+
+            </td>
+
+
+
+
+
+
+
+            <td>
+                <table class="customers">
+                    <tr>
+
+                        <h2>options</h2>
+
+
+
+                    </tr>
+
+                    @foreach (var d in Model.listadm)
+                    {
+                        <tr>
+                            <td>ecrant</td>
+                            <td> @d.ecrant ''pouces</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>toit</td>
+                            <td>@d.toit</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>vitre</td>
+                            <td>@d.vitre</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>climatisation</td>
+                            <td>@d.climatisation</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>demarrage</td>
+                            <td>@d.demarrage</td>
+                        </tr>
+
+                    }
+
+
+
+                </table>
+
+
+
+            </td>
+
+
+
+
+
+
+
+
+
+        </tr>
+
+        <tr>
+            <td>
+                <table class="customers">
+                    <tr>
+                        <h2>performances</h2>
+                    </tr>
+                    @foreach (var d in Model.listadm)
+                    {
+                        <tr>
+                            <td>consomation</td>
+                            <td>@d.consomation /100km</td>
+
+
+
+                        </tr>
+
+
+                        <tr>
+                            <td>temp de passge de 0 a 100km </td>
+                            <td>@d.p_vitessemax secondes </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>vitesse maximale </td>
+                            <td>@d.p_vitessemax km/heure </td>
+                        </tr>
+                    }
+
+                </table>
+
+
+
+            </td>
+
+
+        </tr>
+
+
+
+
+
+
+    </table>
+    <div class="comment">
+        <fieldset class="fset" style="border:1px solid ; width:60%; ">
+            <legend style="color: #A52A2A; font-family: cursive; font-size:30px">commentaires</legend>
+            @foreach (var d in Model.commentaires)
+
+            {@*<div style="background: #87CEEB; width: 50%; height: max-content ">
+                        <p style="font-family: cursive;font-size:12px;color:black">@d.com</p><br />
+                        <p style="font-size: 7px; color: #DCDCDC; margin-right: 1px ">@d.DateTime</p>
+                    </div>*@
+
+
+            <div class="alert alert-info  h1" role="alert">
+                <div class="b1">
+
+                    <img style=" width: 40px; height: 40px;" src="data:image/jpeg;base64,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" alt="..." class="img-circle">
+
+                </div>
+                <div class="b1">
+                    <p style="font-family: cursive;font-size:20px;color:dimgrey">@d.com</p><br />
+                    <p style="font-size: 9px; color: black; margin-right: 1px ">@d.DateTime</p>
+                </div>
+
+            </div>
+        }
+        </fieldset>
+
+
+
+
+        @foreach (var d in Model.listadm)
+        {
+            <div class="x1"><input class="p1 form-control input-lg" id="input_@d.voiture" type="text" placeholder="ajouter votre avis"></div>
+
+            //<input type="text" id="input_@d.voiture" style="width:100px " /><p id="demo"></p>
+            //<button onclick="senddata('@d.voiture')"> send </button>
+
+            <div class="x2"><button type="button" onclick="senddata('@d.voiture')" class="btn btn-primary">Envoyer</button></div>
+
+
+
+        }
+
+    </div>
+
+</body>
+</html>
+
+
+
+<script>
+    function senddata(voiture) {
+        let comm = document.getElementById("input_" + voiture).value;
+        html = "ecrivez quelque chose"
+        if (comm != "") {
+            $.ajax({
+                url: "/Home/comment",
+                type: "post",
+
+                data: {
+                    "voiture": voiture,
+                    "comm": comm
+                },
+
+                success: function (result) {
+                    window.location.reload();
+                    document.getElementById("input_" + voiture).value = "";
+                    document.getElementById("demo").innerHTML = ""
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+
+        }
+
+        if (comm == "") {
+            document.getElementById("demo").innerHTML = html;
+        }
+
+    }
+
+
+
+
+
+    function gettdata(voiture) {
+
+        let comm = document.getElementById("input_" + voiture).value;
+
+        $.ajax({
+            url: "/Home/comment",
+            type: "post",
+            data: {
+                "voiture": voiture,
+                "comm": comm
+            },
+
+
+            success: function (result) {
+                window.location.reload();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+
+
+
+
+    }
+
+
+</script>

@@ -1,0 +1,681 @@
+﻿
+@{
+    ViewBag.Title = "View99";
+}
+@model miniprojet.Models.objectv
+@*@using (Html.BeginForm("View99", "Home", FormMethod.Post))
+    {*@
+<html>
+<head>
+    
+
+    <style>
+
+        /*       body {
+            background: #FFB6C1;
+        }*/
+
+        .a1 {
+            width: 49%;
+            max-height: auto;
+            background-color: dodgerblue;
+        }
+
+        .a2 {
+            width: 49%;
+            /*height: 200px;*/
+            max-height: auto;
+            background-color: bisque;
+        }
+
+        .a2, .a1 {
+            display: inline-block;
+        }
+
+
+        #tabb {
+            margin-top: 100px;
+        }
+
+        #fff {
+            margin-top: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <h1 style="font-family: cursive; color:darkred; font-size:50px">PARTIE ADMINISTRATEUR:</h1>
+    @*<details>
+        <summary>click to show th form</summary>
+        <form action="">*@
+    <div id="fff">
+        <div class="a2">
+            <h1 style="font-family: cursive; color:white; font-size:39px">AJOUTER NOUVEAU MARQUE</h1>
+            <article id="insertmarque">
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Ajouter</button>
+
+                <div class="modal fade" tabindex="-1" id="myModal" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form action="">
+
+                                <fieldset>
+                                    <div>
+                                        <div><label>nom de nouveau :</label></div>
+                                        <div><input type="text" id="nouveau" required><br><p style="color:red" id="nouveaup"></p></div>
+                                    </div>
+                                    <div>
+                                        <div><label>photo de marque:</label></div>
+                                        <div><input type="text" id="photomarque" required><br><p style="color:red" id="photomarquep"></p></div>
+                                    </div>
+                                </fieldset>
+                                @*<input type="button" onclick="senddata2()" value="OK">*@
+                                <button type="button" class="btn btn-info" onclick="senddata2()">OK</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </article>
+        </div>
+        <div class="a1">
+            <h1 style="font-family: cursive; color:white; font-size:39px">AJOUTER NOUVEAU VOITURE</h1>
+            <article id="insert">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal1">Ajouter Article</button>
+
+                <div class="modal fade" tabindex="-1" id="myModal1" role="dialog" aria-labelledby="myLargeModalLabel">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <form action="">
+
+                                <fieldset>
+                                    <div class="tout">
+
+
+                                        <div>
+                                            <div><label>marque:</label></div>
+                                            <div>
+                                                <select name="cars" id="marque">
+                                                    <option value="0">Please Select</option>
+                                                    @foreach (var d in Model.listmarques)
+                                                    {
+                                                        <option value="@d.marque">@d.marque</option>
+                                                    }
+                                                </select><br /><p style="color:red" id="marque1"></p>
+
+                                            </div>
+
+                                        </div>
+                                        <div>
+                                            <div><label>nom de voiture:</label></div>
+                                            <div><input id="nom" type="text" maxlength="32" required><br><p style="color:red" id="nomd"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>prix:</label></div>
+                                            <div><input id="prix" type="number" required><br><p style="color:red" id="prixd"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>photo1   :</label></div>
+                                            <div><input id="photo1" type="text" maxlength="32" required><br><p style="color:red" id="photo1d"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>photo2   :</label></div>
+                                            <div><input id="photo2" type="text" maxlength="32" required><br><p style="color:red" id="photo2d"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>photo3   :</label></div>
+                                            <div><input id="photo3" type="text" maxlength="32" required><br><p style="color:red" id="photo3d"></p></div>
+                                        </div>
+
+                                        <div>
+                                            <div><label>photo4   :</label></div>
+                                            <div><input id="photo4" type="text" maxlength="32" required><br><p style="color:red" id="photo4d"></p></div>
+                                        </div>
+
+                                        <div>
+                                            <div><label>photo5   :</label></div>
+                                            <div><input id="photo5" type="text" maxlength="32" required><br><p style="color:red" id="photo5d"></p></div>
+                                        </div>
+
+
+                                        <h2>caracteristique</h2>
+                                        <div>
+                                            <div><label>nombre de place   :</label></div>
+                                            <div><input id="place" type="number" required><p>places</p><br><p style="color:red" id="placed"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>Garantie   :</label></div>
+                                            <div><input id="Garantie" type="number" required><p>ans</p><br><p style="color:red" id="Garantied"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>nombre de portes   :</label></div>
+                                            <div><input id="portes" type="number" required><p>portes</p><br><p style="color:red" id="portesd"></p></div>
+                                        </div>
+
+
+                                        <h2> dimention </h2><br />
+                                        <div>
+                                            <div><label>longeur   :</label></div>
+                                            <div><input id="longeur" type="number" required><p>cm</p><br><p style="color:red" id="longeurd"></p></div>
+                                        </div>
+
+                                        <div>
+                                            <div><label>largeur   :</label></div>
+                                            <div><input id="largeur" type="number" required><p>cm</p><br><p style="color:red" id="largeurd"></p></div>
+                                        </div>
+
+                                        <div>
+                                            <div><label>hauteur   :</label></div>
+                                            <div><input id="hauteur" type="number" required> <p>cm</p><br><p style="color:red" id="hauteurd"></p></div>
+                                        </div>
+
+                                        <h2>motorisation</h2>
+                                        <div>
+                                            <div><label>nombre de cylindre   :</label></div>
+                                            <div><input id="cylindre" type="number" required><br><p style="color:red" id="cylindred"></p></div>
+                                        </div>
+
+
+                                        <div>
+                                            <div><label>energie</label></div>
+                                            <div>
+                                                <select id="energie">
+                                                    <option value="0">Please Select</option>
+                                                    <option value="electrique">electrique</option>
+                                                    <option value="essence">essence</option>
+                                                    <option value="gazoil">gazoil</option>
+
+                                                </select><br /><p style="color:red" id="energied"></p>
+                                            </div>
+
+                                        </div>
+
+                                        <div>
+                                            <div><label>puissance   :</label></div>
+                                            <div><input id="puissance" type="number" required><p>ch</p><br><p style="color:red" id="puissanced"></p></div>
+                                        </div>
+                                        <div>
+                                            <div><label>puissance fiscale  :</label></div>
+                                            <div><input id="fiscale" type="number" required><p>cv</p><br><p style="color:red" id="fiscaled"></p></div>
+                                        </div>
+
+
+
+                                        <h2>options</h2>
+                                        <div>
+                                            <div><label>ecrant :</label></div>
+                                            <div><input id="ecrant" type="number" required><p>pouce</p><br><p style="color:red" id="ecrantd"></p></div>
+                                        </div>
+
+
+                                        <div>
+                                            <div><label>toit  :</label></div>
+                                            <div>
+                                                <select id="toit">
+                                                    <option value="0">Please Select</option>
+                                                    <option value="panoramique" id="panoramique">panoramique</option>
+                                                    <option value="simple" id="simple">simple</option>
+
+
+                                                </select><br /><p style="color:red" id="toitd"></p>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div><label>vitre :</label></div>
+                                            <select id="vitre">
+                                                <option value="0">Please Select</option>
+                                                <option value="electrique" id="electrique">electrique</option>
+                                                <option value="manuel" id="manuel">manuel</option>
+
+
+                                            </select><br /><p style="color:red" id="vitred"></p>
+                                        </div>
+
+                                        <div>
+                                            <div><label>demarrage :</label></div>
+                                            <select id="demarrage">
+                                                <option value="0">Please Select</option>
+                                                <option value="boutton" id="boutton">boutton satart and stop</option>
+                                                <option value="cle" id="cle">clé</option>
+
+
+                                            </select><br /><p style="color:red" id="demarraged"></p>
+                                        </div>
+
+
+                                        <div>
+                                            <div><label>climatisation :</label></div>
+                                            <select id="climatisation">
+                                                <option value="0">Please Select</option>
+                                                <option value="automatique" id="automatique">automatique</option>
+                                                <option value="manuel" id="manuel">manuel</option>
+
+
+                                            </select><br /><p style="color:red" id="climatisationd"></p>
+                                        </div>
+
+                                        <h2>performance</h2>
+
+                                        <div>
+                                            <div><label>passage de 0 à 100km/h</label></div>
+                                            <div><input id="passage" type="number" required><p>/seconde</p><br><p style="color:red" id="passaged"></p></div>
+                                        </div>
+
+                                        <div>
+                                            <div><label>vitesse max</label></div>
+                                            <div><input id="vitesse" type="number" required><p>km</p><br><p style="color:red" id="vitessed"></p></div>
+                                        </div>
+
+
+                                        <div>
+                                            <div><label>consomation:</label></div>
+                                            <div><input id="consomation" type="number" required><p>consomation par 100km</p><br><p style="color:red" id="consomationd"></p></div>
+                                        </div>
+
+                                    </div>
+                                </fieldset>
+                               @* <input id="but" type="button" onclick="senddata1()" value="OK">*@
+                                <button type="button" onclick="senddata1()" class="btn btn-info">ajouter</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </div>
+
+
+
+
+    <div id="tabb">
+        <table id="example" class="table table-bordered table-responsive table-hover">
+            <tr>
+
+                <th>marque</th>
+                <th>voiture </th>
+                <th>prix </th>
+                <th>delete </th>
+                <th>update prix </th>
+
+            </tr>
+            @foreach (var d in Model.lselectvoitureadmin)
+            {
+                <tr id="Line_@d.voiture">
+                    <td>@d.marque</td>
+                    <td>@d.voiture</td>
+                    <td>@d.prix</td>
+                    <td><button @*type="submit"*@="button" id="Butt_@d.voiture" value="Delete" class="btn btn-sm btn-danger rounded-0" onclick="return confirm('Are you sure?') ,del('@d.voiture')">Delete</button></td>
+                    <td>
+                        <button type="button" class="btn btn-success" id="show_@d.voiture" onclick="showhide('@d.voiture')" ondblclick="showhide2('@d.voiture')">Update</button>
+                        @*<button id="show_@d.voiture" onclick="showhide('@d.voiture')" ondblclick="showhide2('@d.voiture')">update</button>*@
+                    <div id="div_@d.voiture" style="display: none">
+
+                        <div><label>nouveau prix :</label></div>
+                        <div><input id="prix_@d.voiture" type="number"><br></div>
+                        @*<button id="Buttup_@d.voiture" value="update" onclick="update1('@d.voiture')">save</button>*@
+                        <button type="button" class="btn btn-warning" id="Buttup_@d.voiture"  onclick="update1('@d.voiture')">save</button>
+                    </div>
+
+
+
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+    </div>
+    @*</form>
+        </details>*@
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+@*}*@
+
+<script>
+
+
+
+
+    function senddata2() {
+        let nouveau = document.getElementById("nouveau").value;
+        let photomarque = document.getElementById("photomarque").value;
+        let html = "remplir cet elt";
+        let html0 = "";
+        let s = 0;
+        if (nouveau != "" && photomarque != "") {
+            $.ajax({
+                url: "/Home/insertmarque",
+                type: "post",
+
+                data: {
+                    "photo_marque": photomarque,
+                    "marque": nouveau,
+                },
+
+
+
+
+                success: function (result) {
+                    //debugger;
+                    console.log(result);
+                    alert("marque ajouter  ")
+                    document.getElementById("nouveaup").innerHTML = html0;
+                    document.getElementById("photomarquep").innerHTML = html0;
+                    document.getElementById("nouveau").value = "";
+                    document.getElementById("photomarque").value = "";
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        if (nouveau == "") {
+            document.getElementById("nouveaup").innerHTML = html;
+        }
+        if (photomarque == "") {
+            document.getElementById("photomarquep").innerHTML = html;
+        }
+        //if (s == 1) {
+        //    document.getElementById("nouveaup").innerHTML = html0;
+        //    document.getElementById("photomarquep").innerHTML = html0;
+        //}
+
+
+    }
+
+
+    function senddata1() {
+
+        let html = "remplir cet elt";
+        let html0 = "";
+        marque0 = document.querySelector('#marque');
+        marque = marque0.value;
+
+        let nom = document.getElementById("nom").value;
+        let prix = document.getElementById("prix").value;
+        let photo1 = document.getElementById("photo1").value;
+        let photo2 = document.getElementById("photo2").value;
+        let photo3 = document.getElementById("photo3").value;
+        let photo4 = document.getElementById("photo4").value;
+        let photo5 = document.getElementById("photo5").value;
+
+        let place = document.getElementById("place").value;
+        let Garantie = document.getElementById("Garantie").value;
+        let portes = document.getElementById("portes").value;
+
+        let hauteur = document.getElementById("hauteur").value;
+        let largeur = document.getElementById("largeur").value;
+        let longeur = document.getElementById("longeur").value;
+
+        let cylindre = document.getElementById("cylindre").value;
+        energie0 = document.querySelector('#energie');
+        energie = energie0.value;
+        let puissance = document.getElementById("puissance").value;
+        let fiscale = document.getElementById("fiscale").value;
+
+
+        let ecrant = document.getElementById("ecrant").value;
+        toit0 = document.querySelector('#toit');
+        toit = toit0.value;
+
+        vitre0 = document.querySelector('#vitre');
+        vitre = vitre0.value;
+
+        demarrage0 = document.querySelector('#demarrage');
+        demarrage = demarrage0.value;
+
+        climatisation0 = document.querySelector('#climatisation');
+        climatisation = climatisation0.value;
+
+
+
+
+        let passage = document.getElementById("passage").value;
+        let vitesse = document.getElementById("vitesse").value;
+        let consomation = document.getElementById("consomation").value;
+
+        //let fiscale = document.getElementById("fiscale").value;
+        //let fiscale = document.getElementById("fiscale").value;
+        let v1 = (marque != 0 && nom != "" && prix != "" && photo1 != "" && photo2 != "" && photo3 != "" && photo4 != "" && photo5 != "" && place != "" && Garantie != "" && portes != "" && portes != "" && hauteur != "" && largeur != "" && longeur != "" && cylindre != "" && energie != 0 && puissance != "");
+        let v2 = (fiscale != "" && ecrant != "" && toit != 0 && vitre != 0 && demarrage != 0 && climatisation != 0);
+        if (v1 && v2) {
+            $.ajax({
+                url: "/Home/insert",
+                type: "post",
+
+                data: {
+                    "prix": prix,
+                    "marque": marque,
+                    "voiture": nom,
+                    "photo1": photo1,
+                    "photo2": photo2,
+
+                    "photo3": photo3,
+                    "photo4": photo4,
+                    "photo5": photo5,
+                    "d_longeur": longeur,
+                    "d_largeur": largeur,
+                    "d_hauteur": hauteur,
+                    "c_nombre_place": place,
+                    "c_Grantie": Garantie,
+                    "c_nbre_porte": portes,
+                    "nbrecylindre": cylindre,
+                    "energie": energie,
+                    "puissance_fiscale": fiscale,
+                    "puissance": puissance,
+                    "ecrant": ecrant,
+                    "toit": toit,
+                    "vitre": vitre,
+                    "demarrage": demarrage,
+                    "climatisation": climatisation,
+                    "p_0_100km": passage,
+                    "p_vitessemax": vitesse,
+                    "consomation": consomation
+                },
+                success: function (result) {
+
+                    alert("voiture ajouter");
+                    document.getElementById("nomd").innerHTML = html0;
+                    document.getElementById("prixd").innerHTML = html0;
+                    document.getElementById("photo1d").innerHTML = html0;
+                    document.getElementById("photo2d").innerHTML = html0;
+                    document.getElementById("photo3d").innerHTML = html0;
+                    document.getElementById("photo4d").innerHTML = html0;
+                    document.getElementById("photo5d").innerHTML = html0;
+                    document.getElementById("placed").innerHTML = html0;
+                    document.getElementById("Garantied").innerHTML = html0;
+                    document.getElementById("portesd").innerHTML = html0;
+                    document.getElementById("hauteurd").innerHTML = html0;
+                    document.getElementById("largeurd").innerHTML = html0;
+                    document.getElementById("longeurd").innerHTML = html0;
+                    document.getElementById("cylindred").innerHTML = html0;
+                    document.getElementById("puissanced").innerHTML = html0;
+                    document.getElementById("fiscaled").innerHTML = html0;
+                    document.getElementById("passaged").innerHTML = html0;
+                    document.getElementById("vitessed").innerHTML = html0;
+                    document.getElementById("consomationd").innerHTML = html0;
+                    document.getElementById("ecrantd").innerHTML = html0;
+
+
+                    document.getElementById("marque1").innerHTML = html0;
+                    document.getElementById("energied").innerHTML = html0;
+                    document.getElementById("toitd").innerHTML = html0;
+                    document.getElementById("vitred").innerHTML = html0;
+                    document.getElementById("demarraged").innerHTML = html0;
+                    document.getElementById("climatisationd").innerHTML = html0;
+
+
+                    document.querySelector('#marque').value = "0";
+                    document.getElementById("nom").value = "";
+                    document.getElementById("prix").value = "";
+                    document.getElementById("photo1").value = "";
+                    document.getElementById("photo2").value = "";
+                    document.getElementById("photo3").value = "";
+                    document.getElementById("photo4").value = "";
+                    document.getElementById("photo5").value = "";
+                    document.getElementById("place").value = "";
+                    document.getElementById("Garantie").value = "";
+                    document.getElementById("portes").value = "";
+                    document.getElementById("hauteur").value = "";
+                    document.getElementById("largeur").value = "";
+                    document.getElementById("longeur").value = "";
+                    document.getElementById("cylindre").value = "";
+                    document.querySelector('#energie').value = "";
+                    document.getElementById("puissance").value = "";
+                    document.getElementById("fiscale").value = "";
+                    document.getElementById("ecrant").value = "";
+                    document.querySelector('#toit').value = "0";
+                    document.querySelector('#vitre').value = "0";
+                    document.querySelector('#demarrage').value = "0";
+                    document.querySelector('#climatisation').value = "0";
+                    document.getElementById("passage").value = "";
+                    document.getElementById("vitesse").value = "";
+                    document.getElementById("consomation").value = "";
+                    window.location.reload();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        if (nom == "") { document.getElementById("nomd").innerHTML = html; }
+        if (prix == "") { document.getElementById("prixd").innerHTML = html; }
+        if (photo1 == "") { document.getElementById("photo1d").innerHTML = html; }
+        if (photo2 == "") { document.getElementById("photo2d").innerHTML = html; }
+        if (photo3 == "") { document.getElementById("photo3d").innerHTML = html; }
+        if (photo4 == "") { document.getElementById("photo4d").innerHTML = html; }
+        if (photo5 == "") { document.getElementById("photo5d").innerHTML = html; }
+        if (place == "") { document.getElementById("placed").innerHTML = html; }
+        if (Garantie == "") { document.getElementById("Garantied").innerHTML = html; }
+        if (portes == "") { document.getElementById("portesd").innerHTML = html; }
+        if (hauteur == "") { document.getElementById("hauteurd").innerHTML = html; }
+        if (largeur == "") { document.getElementById("largeurd").innerHTML = html; }
+        if (longeur == "") { document.getElementById("longeurd").innerHTML = html; }
+        if (cylindre == "") { document.getElementById("cylindred").innerHTML = html; }
+        if (puissance == "") { document.getElementById("puissanced").innerHTML = html; }
+        if (fiscale == "") { document.getElementById("fiscaled").innerHTML = html; }
+        if (passage == "") { document.getElementById("passaged").innerHTML = html; }
+        if (vitesse == "") { document.getElementById("vitessed").innerHTML = html; }
+        if (consomation == "") { document.getElementById("consomationd").innerHTML = html; }
+        if (fiscale == "") { document.getElementById("fiscaled").innerHTML = html; }
+        if (ecrant == "") { document.getElementById("ecrantd").innerHTML = html; }
+
+        if (marque == "0") { document.getElementById("marque1").innerHTML = html; }
+        if (energie == "0") { document.getElementById("energied").innerHTML = html; }
+        if (toit == "0") { document.getElementById("toitd").innerHTML = html; }
+        if (vitre == "0") { document.getElementById("vitred").innerHTML = html; }
+        if (demarrage == "0") { document.getElementById("demarraged").innerHTML = html; }
+        if (climatisation == "0") { document.getElementById("climatisationd").innerHTML = html; }
+
+        //document.getElementById("consomationd").innerHTML = html;
+
+
+
+
+
+
+    }
+
+
+    function del(voiture) {
+        
+        $.ajax({
+
+            type: "POST",
+
+            url: "/Home/deletearticle",
+
+            data: {
+
+                "voiture": voiture
+
+            }, success: function (data) {
+                
+                    console.log("hello");
+                    //location.reload();
+                    //$("#Line_" + FieldCode).hide();
+                    $('#Line_' + voiture).css('color', '#FF0000');
+                $('#Butt_' + voiture).hide(100);
+                $('#show_' + voiture).hide(100);
+                
+
+
+            },
+
+            error: function () {
+
+                alert("something seems wrong");
+
+            }
+
+        });
+    }
+
+    function update1(voiture) {
+        /*console.log("hello");*/
+        var idd = 'prix_' + voiture;
+        //let prix = document.getElementById("prix").value;
+        var newprice = document.getElementById(idd).value;
+        $.ajax({
+
+            type: "post",
+
+            url: "/Home/updateprix",
+
+            data: {
+
+                "voiture": voiture,
+                "prix": newprice
+
+            }, success: function (data) {
+                location.reload();
+
+
+            },
+
+            error: function () {
+                console.log("helloerror");
+                alert("something seems wrong");
+
+            }
+
+        });
+        // location.reload();
+    }
+
+
+   
+
+    function showhide(voiture) {
+        
+        $("#div_" + voiture).show(1000);
+    }
+
+
+    function showhide2(voiture) {
+
+        $("#div_" + voiture).hide();
+    }
+
+
+</script>

@@ -1,0 +1,69 @@
+﻿* {
+    box-sizing: border-box
+}
+
+img {
+    max-width: 100%
+}
+
+input[type=radio] {
+    position: absolute;
+    left: -9999px
+}
+/*on cache tous les input*/
+
+.slider-input label {
+    cursor: pointer /*on pointe tous les labels*/
+}
+
+.slider-input {
+    overflow: hidden;
+    position: relative;
+    max-width: 600px;
+    margin: 2rem auto
+}
+
+
+.photos-mini {
+    padding-top: 66.67%; /* il s'agit du ratio pour le responsive*/
+    display: flex;
+}
+
+.miniature {
+    flex: 1; /*les photos occupent la même place selon la largeur du conteneur*/
+    padding: .25rem;
+}
+
+
+.fenetre { /*grande photo*/
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform .6s,opacity .6s;
+    transform: translatex(-100%);
+    opacity: 0
+}
+
+.fen:checked ~ .fenetre {
+    transform: translatex(0%);
+    opacity: 1
+}
+
+.figcaption { /*optionnel*/
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .25rem;
+    transition: opacity .4s;
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    color: white;
+    background: hsla(0,0%,0%,.8)
+}
+
+.fen:checked ~ .figcaption {
+    opacity: 1
+}

@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+<html>
+<head>
+    @*<meta name="viewport" content="width=device-width, initial-scale=1">*@
+    <link rel="stylesheet" href="~/Content/viewtest.css">
+    <script>
+
+        function formdata() {
+
+
+            $.ajax({
+                url: "/Home/GetDatabaseList",
+
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+
+                success: function (result) {
+                    // debugger;
+                    console.log(result);
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function senddata() {
+            console.log('wiem');
+            let password = document.getElementById("in2").value;
+            let login = document.getElementById("in1").value;
+            console.log(password);
+            $.ajax({
+                url: "/Home/validTest",
+                type: "post",
+
+                data: {
+                    "login": login,
+                    "password": password
+
+                },
+
+                success: function (result) {
+                    //debugger;
+                    console.log(result);
+                    console.log(password);
+                    if (result == "True") {
+                        //  console.log(result);
+                        window.location.replace("https://localhost:44388/Home/View99");
+                        //https://localhost:44388/Home/View99
+                    }
+                    //console.log(window.location);
+
+                    else
+                        //window.location.replace("https://localhost:44388/Home/Viewtest");
+                        alert("verifier vos compte")
+                    console.log(window.location);
+
+                    //console.log(result);
+
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+
+
+
+    </script>
+    <style>
+        #about{
+            margin-top:100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="about">
+        <h2>Login</h2>
+
+        <form>
+            <div class="imgcontainer">
+                <img src="~/imag/illustration-de-login-36025252.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" id="in1" @*required*@>
+
+                <label><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" id="in2" @*required*@>
+
+                <button type="submit" onclick="senddata()">Login</button>
+
+            </div>
+
+
+        </form>
+    </div>
+
+
+</body>
+</html>
